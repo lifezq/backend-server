@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
+
 /**
  * @Package com.dpi.server
  * @ClassName ServerApplication
@@ -25,6 +27,7 @@ public class ServerApplication {
 
 
     @GetMapping("server")
+    @RolesAllowed("myrealm-user")
     @ResponseBody
     public String hello() {
         return "Hello..." + environment.getProperty("server.port");

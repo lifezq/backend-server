@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>backend-server</artifactId>
         <groupId>com.dpi</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dpi</groupId>
-    <artifactId>server</artifactId>
+    <artifactId>web-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>server</name>
-    <description>Server project for Spring Boot</description>
+    <name>web-service</name>
+    <description>Web service project for Spring Boot</description>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+        <cloud.alibaba.version>2021.0.4.0</cloud.alibaba.version>
+        <springfox.version>3.0.0</springfox.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
         <mysql-connector.version>8.0.30</mysql-connector.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
-        <hutool.version>5.8.10</hutool.version>
-        <cloud.alibaba.version>2021.0.4.0</cloud.alibaba.version>
-        <redis.version>3.0.0</redis.version>
-        <fastjson2.version>2.0.21</fastjson2.version>
     </properties>
 
     <dependencies>
@@ -33,38 +30,25 @@
             <scope>runtime</scope>
             <version>${mysql-connector.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
         </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.auth0</groupId>-->
-        <!--            <artifactId>java-jwt</artifactId>-->
-        <!--            <version>4.2.1</version>-->
-        <!--        </dependency>-->
-
-
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>${cloud.alibaba.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>${cloud.alibaba.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-boot-starter</artifactId>
@@ -75,16 +59,15 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${redis.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>${springfox.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
-            <version>${fastjson2.version}</version>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -96,11 +79,6 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
