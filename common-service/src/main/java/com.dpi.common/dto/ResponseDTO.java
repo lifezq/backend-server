@@ -1,4 +1,4 @@
-package com.dpi.web.dto;
+package com.dpi.common.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

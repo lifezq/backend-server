@@ -16,13 +16,17 @@
 
     <properties>
         <java.version>11</java.version>
-        <springfox.version>3.0.0</springfox.version>
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <mysql-connector.version>8.0.30</mysql-connector.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.dpi</groupId>
+            <artifactId>common-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -47,11 +51,6 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${springfox.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>

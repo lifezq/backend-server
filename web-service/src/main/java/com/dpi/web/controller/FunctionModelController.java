@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dpi.common.dto.PageRequestDTO;
+import com.dpi.common.dto.ResponseDTO;
 import com.dpi.web.convert.FunctionModelConvertor;
 import com.dpi.web.dto.FunctionModelDTO;
-import com.dpi.web.dto.PageRequestDTO;
-import com.dpi.web.dto.ResponseDTO;
 import com.dpi.web.mapper.auto.entity.FunctionModel;
 import com.dpi.web.mapper.auto.service.impl.FunctionModelServiceImpl;
 import io.swagger.annotations.Api;
@@ -69,7 +69,7 @@ public class FunctionModelController {
                 FunctionModelConvertor.INSTANCE.toFunctionModel(functionModelDTO), wrapper);
         return ResponseDTO.<Integer>builder().data(id).build();
     }
-    
+
     @ApiOperation(value = "列表功能模块", httpMethod = "GET", response = ResponseDTO.class,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping("/list")

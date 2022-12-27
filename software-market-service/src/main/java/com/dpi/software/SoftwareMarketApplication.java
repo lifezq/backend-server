@@ -1,19 +1,22 @@
-package com.dpi.web;
+package com.dpi.software;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * @Package com.dpi.software
+ * @ClassName SoftwareMarketApplication
+ * @Description TODO
+ * @Author Ryan
+ * @Date 2022/12/27
+ */
 @EnableTransactionManagement
-@MapperScan(basePackages = {"com.dpi.web.mapper.*"})
-@ComponentScan(basePackages = {"com.dpi.web.*", "com.dpi.common.*"})
+@ComponentScan(basePackages = {"com.dpi.software.*", "com.dpi.common.*"})
 @SpringBootApplication
-public class WebApplication {
-
+public class SoftwareMarketApplication {
     public static void main(String[] args) {
-        SpringApplication.run(WebApplication.class, args);
+        SpringApplication.run(SoftwareMarketApplication.class, args);
     }
-
 }

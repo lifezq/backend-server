@@ -29,6 +29,7 @@
         <module>web-service</module>
         <module>software-market-service</module>
         <module>developer-center-service</module>
+        <module>common-service</module>
     </modules>
 
     <dependencies>
