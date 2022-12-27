@@ -21,7 +21,6 @@
         <mysql-connector.version>8.0.30</mysql-connector.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <hutool.version>5.8.10</hutool.version>
-        <cloud.alibaba.version>2021.0.4.0</cloud.alibaba.version>
         <redis.version>3.0.0</redis.version>
         <fastjson2.version>2.0.21</fastjson2.version>
     </properties>
@@ -51,19 +50,6 @@
         <!--            <artifactId>java-jwt</artifactId>-->
         <!--            <version>4.2.1</version>-->
         <!--        </dependency>-->
-
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>${cloud.alibaba.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>${cloud.alibaba.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.keycloak</groupId>

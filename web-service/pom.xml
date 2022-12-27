@@ -16,7 +16,6 @@
 
     <properties>
         <java.version>11</java.version>
-        <cloud.alibaba.version>2021.0.4.0</cloud.alibaba.version>
         <springfox.version>3.0.0</springfox.version>
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <mysql-connector.version>8.0.30</mysql-connector.version>
@@ -38,16 +37,6 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>${cloud.alibaba.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>${cloud.alibaba.version}</version>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
