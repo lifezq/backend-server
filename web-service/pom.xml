@@ -19,6 +19,7 @@
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <mysql-connector.version>8.0.30</mysql-connector.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <flyway.version>9.10.2</flyway.version>
     </properties>
 
     <dependencies>
@@ -41,6 +42,13 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
+            <version>${flyway.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
@@ -64,6 +72,7 @@
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway.version}</version>
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/backend-server?useSSL=FALSE&amp;characterEncoding=UTF8&amp;serverTimezone=UTC</url>
                     <user>root</user>

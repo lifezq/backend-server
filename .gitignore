@@ -37,6 +37,7 @@ mvnw.cmd
 mvnw
 
 logs
+*.log
 
 gateway/target
 server/target
