@@ -28,7 +28,7 @@ public class SwaggerConfiguration {
                 "APIs for Web 服务接口文档.",
                 "1.0",
                 "Web 服务接口",
-                new Contact("DPI", "www.dpi.com", "dpi@deltaphone.com"),
+                new Contact("DPI", "www.dpi.com", "dpi@dpi.com"),
                 "License of API",
                 "API license URL",
                 Collections.emptyList());
