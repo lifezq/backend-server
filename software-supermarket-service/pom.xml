@@ -8,11 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.dpi</groupId>
-    <artifactId>software-market-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Software market service</name>
-    <description>Software market project for Spring Boot</description>
+
+    <artifactId>software-supermarket-service</artifactId>
+    <name>Software supermarket service</name>
+    <description>Software supermarket project for Spring Boot</description>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -29,11 +28,16 @@
             <artifactId>common-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>com.dpi</groupId>-->
-        <!--            <artifactId>mq-service</artifactId>-->
-        <!--            <version>0.0.1-SNAPSHOT</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.dpi</groupId>
+            <artifactId>mq-common-component-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dpi</groupId>
+            <artifactId>producer-message-provider-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

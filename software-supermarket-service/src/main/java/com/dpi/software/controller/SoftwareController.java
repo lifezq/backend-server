@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Package com.dpi.software.controller
  * @ClassName SoftwareController
- * @Description 软件应用接口
+ * @Description TODO
  * @Author Ryan
- * @Date 2022/12/27
+ * @Date 2022/12/29
  */
 @Api("软件应用接口")
 @RequestMapping("/software")
 @RestController
 public class SoftwareController {
-    
+
     @ApiOperation(value = "获取应用列表", httpMethod = "GET", response = ResponseDTO.class,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping("/{id}")
@@ -28,3 +28,4 @@ public class SoftwareController {
         return ResponseDTO.<Integer>builder().data(0).build();
     }
 }
+

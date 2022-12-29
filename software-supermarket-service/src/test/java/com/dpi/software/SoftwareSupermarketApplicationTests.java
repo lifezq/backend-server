@@ -1,9 +1,8 @@
 package com.dpi.software;
 
-import com.dpi.rocketmq.consume.service.PolledProcessorService;
+import com.dpi.rocketmq.provider.service.impl.ProducerMessageProviderServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.support.MessageBuilder;
 
 import javax.annotation.Resource;
@@ -15,14 +14,14 @@ import javax.annotation.Resource;
  * @Author Ryan
  * @Date 2022/12/28
  */
-@EnableBinding(PolledProcessorService.class)
 @SpringBootTest
-public class SoftwareMarketApplicationTests {
+public class SoftwareSupermarketApplicationTests {
     @Resource
-    private PolledProcessorService polledProcessorService;
+    private ProducerMessageProviderServiceImpl producerMessageProviderService;
 
     @Test
     public void testSendMQMessage() {
-        polledProcessorService.dest().send(MessageBuilder.withPayload("software message").build());
+        producerMessageProviderService.producerMessageProvider(
+                MessageBuilder.withPayload("message from software supermarket").build());
     }
 }
