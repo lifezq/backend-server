@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Date 2022/12/29
  */
 @EnableTransactionManagement
-//@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.software.*"})
 @ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.rocketmq.*", "com.dpi.software.*"})
 @SpringBootApplication
 public class SoftwareSupermarketApplication {
