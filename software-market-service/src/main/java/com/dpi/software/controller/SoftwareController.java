@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/software")
 @RestController
 public class SoftwareController {
-
+    
     @ApiOperation(value = "获取应用列表", httpMethod = "GET", response = ResponseDTO.class,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping("/{id}")

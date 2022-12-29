@@ -1,6 +1,6 @@
 package com.dpi.software;
 
-import com.dpi.rocketmq.service.PolledProcessorService;
+import com.dpi.rocketmq.consume.service.PolledProcessorService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.stream.annotation.EnableBinding;

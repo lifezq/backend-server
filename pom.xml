@@ -29,7 +29,8 @@
         <module>software-market-service</module>
         <module>developer-center-service</module>
         <module>common-service</module>
-        <module>mq-service</module>
+        <module>cloud-service</module>
+        <module>mq-core-service</module>
     </modules>
 
     <dependencies>

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @MapperScan(basePackages = {"com.dpi.web.mapper.*"})
-@ComponentScan(basePackages = {"com.dpi.web.*", "com.dpi.common.*"})
+@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.web.*"})
 @SpringBootApplication
 public class WebApplication {
 
