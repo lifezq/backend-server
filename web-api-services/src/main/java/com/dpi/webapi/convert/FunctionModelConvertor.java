@@ -1,19 +1,25 @@
-package com.dpi.web.convert;
+package com.dpi.webapi.convert;
+
+import com.dpi.webapi.dto.FunctionModelDTO;
+import com.dpi.webapi.mapper.auto.entity.FunctionModel;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mappings;
+import org.mapstruct.factory.Mappers;
 
 /**
- * @Package com.dpi.web.convert
+ * @Package com.dpi.webapi.convert
  * @ClassName FunctionModelConvert
  * @Description TODO
  * @Author Ryan
  * @Date 2022/12/26
  */
-//@Mapper
-//public interface FunctionModelConvertor {
-//    FunctionModelConvertor INSTANCE = Mappers.getMapper(FunctionModelConvertor.class);
-//
-//    @Mappings(value = {})
-//    FunctionModelDTO toFunctionModelDTO(FunctionModel functionModel);
-//
-//    @Mappings(value = {})
-//    FunctionModel toFunctionModel(FunctionModelDTO functionModelDTO);
-//}
+@Mapper
+public interface FunctionModelConvertor {
+    FunctionModelConvertor INSTANCE = Mappers.getMapper(FunctionModelConvertor.class);
+
+    @Mappings(value = {})
+    FunctionModelDTO toFunctionModelDTO(FunctionModel functionModel);
+
+    @Mappings(value = {})
+    FunctionModel toFunctionModel(FunctionModelDTO functionModelDTO);
+}

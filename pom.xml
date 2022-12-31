@@ -25,12 +25,12 @@
     <modules>
         <module>gateway</module>
         <module>server</module>
-        <module>web-service</module>
         <module>developer-center-service</module>
         <module>common-service</module>
         <module>cloud-service</module>
         <module>mq-core-service</module>
         <module>software-supermarket-service</module>
+        <module>web-api-services</module>
     </modules>
 
     <dependencies>
