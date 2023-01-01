@@ -38,6 +38,4 @@ mvnw
 
 logs
 *.log
-
-gateway/target
-server/target
+out
