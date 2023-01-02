@@ -1,11 +1,6 @@
 package com.dpi.software;
 
-import com.dpi.rocketmq.provider.service.impl.ProducerMessageProviderServiceImpl;
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.messaging.support.MessageBuilder;
-
-import javax.annotation.Resource;
 
 /**
  * @Package com.dpi.software
@@ -16,6 +11,7 @@ import javax.annotation.Resource;
  */
 @SpringBootTest
 public class SoftwareSupermarketApplicationTests {
+    /* this test need to be open by manual
     @Resource
     private ProducerMessageProviderServiceImpl producerMessageProviderService;
 
@@ -24,4 +20,5 @@ public class SoftwareSupermarketApplicationTests {
         producerMessageProviderService.producerMessageProvider(
                 MessageBuilder.withPayload("message from software supermarket").build());
     }
+    */
 }
