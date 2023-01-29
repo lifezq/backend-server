@@ -30,7 +30,8 @@
         <module>cloud-service</module>
         <module>mq-core-service</module>
         <module>software-supermarket-service</module>
-        <module>web-api-services</module>
+        <module>web-api-service</module>
+        <module>account-service</module>
     </modules>
 
     <dependencies>
