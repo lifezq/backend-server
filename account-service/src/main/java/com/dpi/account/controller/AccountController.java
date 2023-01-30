@@ -53,7 +53,7 @@ public class AccountController {
         return "do login process...";
     }
 
-    @GetMapping(path = "/sso-logout")
+    @GetMapping(path = "/logout")
     @ResponseBody
     public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
         @SuppressWarnings("rawtypes")
@@ -66,12 +66,13 @@ public class AccountController {
         keycloakSecurityContext.setAuthorizationContext(null);
         keycloakSecurityContext.setCurrentRequestInfo(null, null);
 
+
         AuthClientMeta authClientMeta = AuthClientMeta.builder()
                 .authServerUrl(authServerUrl)
                 .realmName(realmName)
                 .clientId(clientId)
                 .clientSecret(clientSecret)
                 .refreshToken(keycloakSecurityContext.getRefreshToken()).build();
-        userService.logout(authClientMeta, response);
+        userService.logout(authClientMeta, request, response);
     }
 }

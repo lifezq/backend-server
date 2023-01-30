@@ -36,7 +36,7 @@ public class LogoutController {
     @Autowired
     private CommonUserService userService;
 
-    @GetMapping("/sso-logout")
+    @GetMapping("/logout")
     public void ssoLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         @SuppressWarnings("rawtypes")
         KeycloakPrincipal userPrincipal = (KeycloakPrincipal) request.getUserPrincipal();
@@ -53,6 +53,6 @@ public class LogoutController {
                 .clientId(clientId)
                 .clientSecret(clientSecret)
                 .refreshToken(keycloakSecurityContext.getRefreshToken()).build();
-        userService.logout(authClientMeta, response);
+        userService.logout(authClientMeta, request, response);
     }
 }

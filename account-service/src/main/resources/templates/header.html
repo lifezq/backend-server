@@ -12,8 +12,8 @@
     <title>Fixed Top Navbar Example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/account-service/css/bootstrap.min.css}"
-          href="/account-service/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -34,7 +34,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/account-service/index">Home</a></li>
+                <li class="active"><a href="/index">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
@@ -42,11 +42,11 @@
                 <th:block th:if="${username}">
                     <li> 您好，<span th:text="${username}"></span>&nbsp;</li>
                     <li>
-                        <a th:href="@{/account-service/account/sso-logout}">退出</a>
+                        <a th:href="@{/account/logout}">退出</a>
                     </li>
                 </th:block>
                 <th:block th:unless="${username}">
-                    <li><a href="/account-service/account/login"> 登录</a></li>
+                    <li><a href="/account/login"> 登录</a></li>
                 </th:block>
             </ul>
         </div><!--/.nav-collapse -->

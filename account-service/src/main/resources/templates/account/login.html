@@ -5,7 +5,7 @@
     <div class="jumbotron col-md-6" style="float: none;margin:0 auto;">
         <div class="center-block">
             <!-- Main component for a primary marketing message or call to action -->
-            <form th:action="@{/account-service/account/doLogin}" method="post" th:method="post" class="form-signin">
+            <form th:action="@{/account/doLogin}" method="post" th:method="post" class="form-signin">
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <div class="form-group">
                     <label for="inputUsername" class="sr-only">Username</label>
@@ -24,6 +24,6 @@
 <th:block th:include="/footer"></th:block>
 <script type="application/javascript">
     function changeCaptcha() {
-        $("#captcha_img").attr("src", "/account-service/captcha/generate?rand=" + Math.random());
+        $("#captcha_img").attr("src", "/captcha/generate?rand=" + Math.random());
     }
 </script>

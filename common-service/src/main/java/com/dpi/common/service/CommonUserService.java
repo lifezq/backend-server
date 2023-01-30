@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -18,7 +19,7 @@ import java.io.IOException;
 @Slf4j
 @Service
 public class CommonUserService {
-    public void logout(AuthClientMeta authClientMeta, HttpServletResponse response) throws IOException {
+    public void logout(AuthClientMeta authClientMeta, HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             String url = authClientMeta.getAuthServerUrl() + "/realms/" + authClientMeta.getRealmName() +
                     "/protocol/openid-connect/logout?" +
@@ -27,7 +28,7 @@ public class CommonUserService {
                     "refresh_token=" + authClientMeta.getRefreshToken();
 
             Cookie cookie = new Cookie("JSESSIONID", "");
-            cookie.setPath("/");
+            cookie.setPath(request.getContextPath());
             cookie.setHttpOnly(false);
             cookie.setMaxAge(-1);
             response.addCookie(cookie);
