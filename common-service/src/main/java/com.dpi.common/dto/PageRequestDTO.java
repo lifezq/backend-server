@@ -1,6 +1,6 @@
 package com.dpi.common.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,11 +19,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PageRequestDTO {
     // current page, default 1
-    @ApiModelProperty(notes = "分页当前页数", example = "1", required = false)
+    @Schema(name = "分页当前页数", example = "1")
     @Builder.Default
     private Integer page = 1;
     // page size, default 10
-    @ApiModelProperty(notes = "分页每页条数", example = "10", required = false)
+    @Schema(name = "分页每页条数", example = "10")
     @Builder.Default
     private Integer size = 10;
 }

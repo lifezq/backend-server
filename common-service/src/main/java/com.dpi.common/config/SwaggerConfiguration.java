@@ -1,16 +1,11 @@
 package com.dpi.common.config;
 
+import io.swagger.v3.oas.models.ExternalDocumentation;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-
-import java.util.Collections;
 
 /**
  * @Package com.dpi.web.config
@@ -19,28 +14,17 @@ import java.util.Collections;
  * @Author Ryan
  * @Date 2022/12/26
  */
-@EnableWebMvc
 @Configuration
 public class SwaggerConfiguration {
-
-    private ApiInfo apiInfo() {
-        return new ApiInfo("Web 服务接口文档 Rest APIs",
-                "APIs for Web 服务接口文档.",
-                "1.0",
-                "Web 服务接口",
-                new Contact("DPI", "www.dpi.com", "dpi@dpi.com"),
-                "License of API",
-                "API license URL",
-                Collections.emptyList());
-    }
-
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.OAS_30)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build();
+    public OpenAPI springShopOpenAPI() {
+        return new OpenAPI()
+                .info(new Info().title("Web 服务接口文档 Rest APIs")
+                        .description("APIs for Web 服务接口文档.")
+                        .version("v0.0.1")
+                        .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                .externalDocs(new ExternalDocumentation()
+                        .description("SpringShop Wiki Documentation")
+                        .url("https://springshop.wiki.github.org/docs"));
     }
 }

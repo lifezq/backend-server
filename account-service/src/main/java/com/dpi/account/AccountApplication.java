@@ -1,9 +1,9 @@
 package com.dpi.account;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 
 /**
  * @Package com.dpi.account
@@ -12,10 +12,8 @@ import org.springframework.context.annotation.FilterType;
  * @Author Ryan
  * @Date 2023/1/16
  */
-@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.account.*"},
-        excludeFilters = {
-                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {com.dpi.common.config.SwaggerConfiguration.class})
-        })
+@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.account.*", "com.dpi.database.*"})
+@MapperScan(basePackages = {"com.dpi.database.mapper.*"})
 @SpringBootApplication
 public class AccountApplication {
 

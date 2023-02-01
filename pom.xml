@@ -20,6 +20,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <spring.cloud.version>2021.0.5</spring.cloud.version>
         <keycloak.version>20.0.2</keycloak.version>
+        <lombok.version>1.18.24</lombok.version>
     </properties>
 
     <modules>
@@ -32,13 +33,21 @@
         <module>software-supermarket-service</module>
         <module>web-api-service</module>
         <module>account-service</module>
+        <module>common-database-auto-module</module>
     </modules>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-mapstruct-binding</artifactId>
+            <version>0.2.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

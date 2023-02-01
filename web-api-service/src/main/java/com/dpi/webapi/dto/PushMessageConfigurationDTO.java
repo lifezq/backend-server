@@ -1,6 +1,6 @@
 package com.dpi.webapi.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,78 +23,78 @@ public class PushMessageConfigurationDTO {
     /**
      * id
      */
-    @ApiModelProperty(notes = "ID", example = "1", required = false)
+    @Schema(name = "ID", example = "1")
     private Long id;
 
     /**
      * 租户号
      */
-    @ApiModelProperty(notes = "租户号", example = "1", required = false)
+    @Schema(name = "租户号", example = "1")
     private Integer tenantId;
 
     /**
      * 消息任务名称
      */
-    @ApiModelProperty(notes = "消息任务名称", example = "", required = true)
+    @Schema(name = "消息任务名称", example = "")
     private String name;
 
     /**
      * 消息事件编码
      */
-    @ApiModelProperty(notes = "消息事件编码", example = "", required = true)
+    @Schema(name = "消息事件编码", example = "")
     private String eventCode;
 
     /**
      * 消息类型编码id
      */
-    @ApiModelProperty(notes = "消息类型编码id", example = "", required = true)
+    @Schema(name = "消息类型编码id", example = "")
     private Integer messageType;
 
     /**
      * 是否可订阅, 0否,1是
      */
-    @ApiModelProperty(notes = "是否可订阅, 0否,1是", example = "0", required = true)
+    @Schema(name = "是否可订阅, 0否,1是", example = "0")
     private Integer isSubscribe;
 
     /**
      * 消息模板id列表
      */
-    @ApiModelProperty(notes = "消息模板id列表，多个以逗号分隔", example = "", required = true)
+    @Schema(name = "消息模板id列表，多个以逗号分隔", example = "")
     private String messageTemplates;
 
     /**
      * 状态;是否可用；1可用;0禁用
      */
-    @ApiModelProperty(notes = "状态;是否可用；1可用;0禁用", example = "1", required = false)
+    @Schema(name = "状态;是否可用；1可用;0禁用", example = "1")
     private Integer state;
 
     /**
      * 是否删除;是否删除；1已删除;0未删除
      */
-    @ApiModelProperty(notes = "是否删除;是否删除；1已删除;0未删除", example = "0", required = false)
+    @Schema(name = "是否删除;是否删除；1已删除;0未删除", example = "0")
     private Integer isDelete;
 
     /**
      * 创建人
      */
-    @ApiModelProperty(notes = "创建人", example = "", required = false)
+    @Schema(name = "创建人", example = "")
     private String createdBy;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(notes = "创建时间", example = "", required = false)
+    @Schema(name = "创建时间", example = "")
     private Date createdTime;
 
     /**
      * 更新人
      */
-    @ApiModelProperty(notes = "更新人", example = "", required = false)
+    @Schema(name = "更新人", example = "")
     private String updatedBy;
 
     /**
      * 更新时间
      */
-    @ApiModelProperty(notes = "更新时间", example = "", required = false)
+    @Schema(name = "更新时间", example = "")
     private Date updatedTime;
 }

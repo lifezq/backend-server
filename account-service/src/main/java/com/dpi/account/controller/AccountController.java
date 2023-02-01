@@ -1,17 +1,25 @@
 package com.dpi.account.controller;
 
+import com.dpi.account.convert.EnterpriseRegisterConvertor;
+import com.dpi.account.dto.EmailValidateRequestDTO;
+import com.dpi.account.dto.EnterpriseRegisterRequestDTO;
 import com.dpi.common.bo.AuthClientMeta;
+import com.dpi.common.dto.ResponseDTO;
 import com.dpi.common.service.CommonUserService;
+import com.dpi.database.mapper.auto.entity.EnterpriseRegister;
+import com.dpi.database.mapper.auto.entity.Tenant;
+import com.dpi.database.mapper.auto.service.impl.EnterpriseRegisterServiceImpl;
+import com.dpi.database.mapper.auto.service.impl.TenantServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.adapters.RefreshableKeycloakSecurityContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
  * @Author Ryan
  * @Date 2023/1/16
  */
+@Tag(name = "账户相关接口")
 @Log4j2
 @RequestMapping("/account")
 @Controller
@@ -41,18 +50,65 @@ public class AccountController {
     private RestTemplate restTemplate;
     @Autowired
     private CommonUserService userService;
+    @Autowired
+    private EnterpriseRegisterServiceImpl enterpriseRegisterService;
+    @Autowired
+    private TenantServiceImpl tenantService;
 
     @GetMapping("/login")
     public String login() {
         return "/account/login";
     }
 
-    @PostMapping("/doLogin")
+    @Operation(summary = "企业注册", method = "POST")
+    @PostMapping("/enterpriseRegister")
     @ResponseBody
-    public String doLogin() {
-        return "do login process...";
+    public ResponseDTO<String> enterpriseRegister(@RequestBody EnterpriseRegisterRequestDTO param) {
+
+        EnterpriseRegister item = enterpriseRegisterService.query().ge(true, "email", param.getEmail()).one();
+        if (item != null) {
+            return ResponseDTO.<String>builder()
+                    .code(HttpStatus.BAD_REQUEST.value()).message("email already exists!").build();
+        }
+
+        String realm = generateRealm(param.getEmail());
+
+        Tenant maxTenant = tenantService.query().select("MAX(id) AS id").one();
+        if (maxTenant == null) {
+            maxTenant = new Tenant();
+            maxTenant.setId(0L);
+        }
+        Tenant tenant = new Tenant();
+        tenant.setId(maxTenant.getId() + 1);
+        tenant.setName(realm);
+        tenantService.save(tenant);
+
+        EnterpriseRegister enterpriseRegister = EnterpriseRegisterConvertor.INSTANCE.toEnterpriseRegister(param);
+        enterpriseRegister.setTenantId(maxTenant.getId().intValue() + 1);
+        enterpriseRegisterService.save(enterpriseRegister);
+        return ResponseDTO.<String>builder().data(realm).build();
     }
 
+    @Operation(summary = "邮箱验证", method = "POST")
+    @PostMapping("/emailValidate")
+    @ResponseBody
+    public ResponseDTO<Boolean> emailValidate(@RequestBody EmailValidateRequestDTO param) {
+
+        EnterpriseRegister item = enterpriseRegisterService.getOne(
+                enterpriseRegisterService.query().ge(true, "email", param.getEmail())
+        );
+        if (item != null) {
+            return ResponseDTO.<Boolean>builder()
+                    .code(HttpStatus.BAD_REQUEST.value()).message("email already exists!").data(false).build();
+        }
+
+        return ResponseDTO.<Boolean>builder().data(true).build();
+    }
+
+    private String generateRealm(String email) {
+        return email.substring(0, email.indexOf("@"));
+    }
+    
     @GetMapping(path = "/logout")
     @ResponseBody
     public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {

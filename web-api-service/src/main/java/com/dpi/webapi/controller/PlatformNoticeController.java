@@ -10,10 +10,9 @@ import com.dpi.webapi.convert.NoticeConvertor;
 import com.dpi.webapi.dto.NoticeDTO;
 import com.dpi.webapi.mapper.auto.entity.Notice;
 import com.dpi.webapi.mapper.auto.service.impl.NoticeServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,15 +23,14 @@ import org.springframework.web.bind.annotation.*;
  * @Author Ryan
  * @Date 2022/12/27
  */
-@Api("平台公告接口")
+@Tag(name = "平台公告接口")
 @RequestMapping("/notice")
 @RestController
 public class PlatformNoticeController {
     @Autowired
     private NoticeServiceImpl noticeService;
 
-    @ApiOperation(value = "获取公告", httpMethod = "GET", response = ResponseDTO.class,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "获取公告", method = "GET")
     @GetMapping("/{id}")
     public ResponseDTO<NoticeDTO> get(@PathVariable Integer id) {
         return ResponseDTO.<NoticeDTO>builder().data(NoticeConvertor.INSTANCE.
@@ -40,8 +38,7 @@ public class PlatformNoticeController {
     }
 
     @Transactional
-    @ApiOperation(value = "删除公告", httpMethod = "DELETE", response = ResponseDTO.class,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "删除公告", method = "DELETE")
     @DeleteMapping("/{id}")
     public ResponseDTO<Integer> delete(@PathVariable Integer id) {
         int data = noticeService.getBaseMapper().deleteById(id);
@@ -49,8 +46,7 @@ public class PlatformNoticeController {
     }
 
     @Transactional
-    @ApiOperation(value = "新增公告", httpMethod = "POST", response = ResponseDTO.class,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "新增公告", method = "POST")
     @PostMapping("")
     public ResponseDTO<Integer> create(@RequestBody NoticeDTO noticeDTO) {
         int id = noticeService.getBaseMapper().insert(
@@ -59,8 +55,7 @@ public class PlatformNoticeController {
     }
 
     @Transactional
-    @ApiOperation(value = "编辑公告", httpMethod = "PUT", response = ResponseDTO.class,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "编辑公告", method = "PUT")
     @PutMapping("")
     public ResponseDTO<Integer> update(@RequestBody NoticeDTO noticeDTO) {
         UpdateWrapper<Notice> wrapper = new UpdateWrapper<>();
@@ -70,8 +65,7 @@ public class PlatformNoticeController {
         return ResponseDTO.<Integer>builder().data(id).build();
     }
 
-    @ApiOperation(value = "列表公告", httpMethod = "GET", response = ResponseDTO.class,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "列表公告", method = "GET")
     @GetMapping("/list")
     public ResponseDTO<IPage<NoticeDTO>> list(@RequestBody PageRequestDTO pageRequestDTO) {
         Page<Notice> page = new Page<>(pageRequestDTO.getPage(), pageRequestDTO.getSize());

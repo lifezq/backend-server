@@ -15,10 +15,9 @@ import com.dpi.webapi.mapper.auto.entity.PushMessageConfiguration;
 import com.dpi.webapi.mapper.auto.service.impl.MessageTemplateServiceImpl;
 import com.dpi.webapi.mapper.auto.service.impl.PushMessageConfigurationServiceImpl;
 import com.dpi.webapi.mapper.auto.service.impl.PushMessageTemplateConfigurationServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
  * @Author Ryan
  * @Date 2022/12/27
  */
-@Api("平台消息配置接口")
+@Tag(name = "平台消息配置接口")
 @RequestMapping("/message")
 @RestController
 public class MessageController {
@@ -40,8 +39,7 @@ public class MessageController {
     @Autowired
     private PushMessageTemplateConfigurationServiceImpl pushMessageTemplateConfigurationService;
 
-    @ApiOperation(value = "获取消息模板", httpMethod = "GET", response = ResponseDTO.class,
-            tags = {"Message template"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "获取消息模板", method = "GET")
     @GetMapping("/template/{id}")
     public ResponseDTO<MessageTemplateDTO> getTemplate(@PathVariable Integer id) {
         return ResponseDTO.<MessageTemplateDTO>builder().data(MessageTemplateConvertor.INSTANCE.
@@ -49,8 +47,7 @@ public class MessageController {
     }
 
     @Transactional
-    @ApiOperation(value = "删除消息模板", httpMethod = "DELETE", response = ResponseDTO.class,
-            tags = {"Message template"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "删除消息模板", method = "DELETE")
     @DeleteMapping("/template/{id}")
     public ResponseDTO<Integer> deleteTemplate(@PathVariable Integer id) {
         int data = messageTemplateService.getBaseMapper().deleteById(id);
@@ -58,8 +55,7 @@ public class MessageController {
     }
 
     @Transactional
-    @ApiOperation(value = "新增消息模板", httpMethod = "POST", response = ResponseDTO.class,
-            tags = {"Message template"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "新增消息模板", method = "POST")
     @PostMapping("/template")
     public ResponseDTO<Integer> createTemplate(@RequestBody MessageTemplateDTO messageTemplateDTO) {
         int id = messageTemplateService.getBaseMapper().insert(
@@ -68,8 +64,7 @@ public class MessageController {
     }
 
     @Transactional
-    @ApiOperation(value = "编辑消息模板", httpMethod = "PUT", response = ResponseDTO.class,
-            tags = {"Message template"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "编辑消息模板", method = "PUT")
     @PutMapping("/template")
     public ResponseDTO<Integer> updateTemplate(@RequestBody MessageTemplateDTO messageTemplateDTO) {
         UpdateWrapper<MessageTemplate> wrapper = new UpdateWrapper<>();
@@ -79,8 +74,7 @@ public class MessageController {
         return ResponseDTO.<Integer>builder().data(id).build();
     }
 
-    @ApiOperation(value = "列表功能模块", httpMethod = "GET", response = ResponseDTO.class,
-            tags = {"Message template"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "列表功能模块", method = "GET")
     @GetMapping("/template/list")
     public ResponseDTO<IPage<MessageTemplateDTO>> listTemplate(@RequestBody PageRequestDTO pageRequestDTO) {
         Page<MessageTemplate> page = new Page<>(pageRequestDTO.getPage(), pageRequestDTO.getSize());
@@ -90,8 +84,7 @@ public class MessageController {
                 page.convert(MessageTemplateConvertor.INSTANCE::toMessageTemplateDTO)).build();
     }
 
-    @ApiOperation(value = "获取消息推送配置", httpMethod = "GET", response = ResponseDTO.class,
-            tags = {"Push message configuration"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "获取消息推送配置", method = "GET")
     @GetMapping("/push/{id}")
     public ResponseDTO<PushMessageConfigurationDTO> getPushMessage(@PathVariable Integer id) {
         return ResponseDTO.<PushMessageConfigurationDTO>builder().data(PushMessageConfigurationConvertor.INSTANCE.
@@ -99,8 +92,7 @@ public class MessageController {
     }
 
     @Transactional
-    @ApiOperation(value = "删除消息推送配置", httpMethod = "DELETE", response = ResponseDTO.class,
-            tags = {"Push message configuration"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "删除消息推送配置", method = "DELETE")
     @DeleteMapping("/push/{id}")
     public ResponseDTO<Integer> deletePushMessage(@PathVariable Integer id) {
         int data = pushMessageConfigurationService.getBaseMapper().deleteById(id);
@@ -108,8 +100,7 @@ public class MessageController {
     }
 
     @Transactional
-    @ApiOperation(value = "新增消息推送配置", httpMethod = "POST", response = ResponseDTO.class,
-            tags = {"Push message configuration"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "新增消息推送配置", method = "POST")
     @PostMapping("/push")
     public ResponseDTO<Integer> createPushMessage(@RequestBody PushMessageConfigurationDTO pushMessageConfigurationDTO) {
         int id = pushMessageConfigurationService.getBaseMapper().insert(
@@ -118,8 +109,7 @@ public class MessageController {
     }
 
     @Transactional
-    @ApiOperation(value = "编辑消息推送配置", httpMethod = "PUT", response = ResponseDTO.class,
-            tags = {"Push message configuration"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "编辑消息推送配置", method = "PUT")
     @PutMapping("/push")
     public ResponseDTO<Integer> updatePushMessage(@RequestBody PushMessageConfigurationDTO pushMessageConfigurationDTO) {
         UpdateWrapper<PushMessageConfiguration> wrapper = new UpdateWrapper<>();
@@ -129,8 +119,7 @@ public class MessageController {
         return ResponseDTO.<Integer>builder().data(id).build();
     }
 
-    @ApiOperation(value = "列表消息推送配置", httpMethod = "GET", response = ResponseDTO.class,
-            tags = {"Push message configuration"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "列表消息推送配置", method = "GET")
     @GetMapping("/push/list")
     public ResponseDTO<IPage<PushMessageConfigurationDTO>> listPushMessage(@RequestBody PageRequestDTO pageRequestDTO) {
         Page<PushMessageConfiguration> page = new Page<>(pageRequestDTO.getPage(), pageRequestDTO.getSize());
