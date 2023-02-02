@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Author Ryan
  * @Date 2023/1/16
  */
-@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.account.*", "com.dpi.database.*"})
+@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.database.*", "com.dpi.account.*"})
 @MapperScan(basePackages = {"com.dpi.database.mapper.*"})
 @SpringBootApplication
 public class AccountApplication {

@@ -1,7 +1,7 @@
 package com.dpi.webapi.convert;
 
+import com.dpi.database.mapper.auto.entity.MessageTemplate;
 import com.dpi.webapi.dto.MessageTemplateDTO;
-import com.dpi.webapi.mapper.auto.entity.MessageTemplate;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;

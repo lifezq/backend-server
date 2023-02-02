@@ -1,7 +1,7 @@
 package com.dpi.webapi.convert;
 
+import com.dpi.database.mapper.auto.entity.FunctionModel;
 import com.dpi.webapi.dto.FunctionModelDTO;
-import com.dpi.webapi.mapper.auto.entity.FunctionModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;

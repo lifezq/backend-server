@@ -1,7 +1,7 @@
 package com.dpi.webapi.convert;
 
+import com.dpi.database.mapper.auto.entity.PushMessageConfiguration;
 import com.dpi.webapi.dto.PushMessageConfigurationDTO;
-import com.dpi.webapi.mapper.auto.entity.PushMessageConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;

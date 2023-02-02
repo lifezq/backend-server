@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Date 12/31/2022
  */
 @EnableTransactionManagement
-@MapperScan(basePackages = {"com.dpi.webapi.mapper.*"})
-@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.webapi.*"})
+@MapperScan(basePackages = {"com.dpi.database.mapper.*"})
+@ComponentScan(basePackages = {"com.dpi.common.*", "com.dpi.database.*", "com.dpi.webapi.*"})
 @SpringBootApplication
 public class WebApiApplication {
     public static void main(String[] args) {
