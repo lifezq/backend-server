@@ -24,7 +24,6 @@
     </properties>
 
     <modules>
-        <module>gateway</module>
         <module>server</module>
         <module>developer-center-service</module>
         <module>common-service</module>
@@ -48,14 +47,6 @@
             <artifactId>lombok-mapstruct-binding</artifactId>
             <version>0.2.0</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>

@@ -24,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @Package com.dpi.account.controller
@@ -58,6 +59,11 @@ public class AccountController {
     @GetMapping("/login")
     public String login() {
         return "/account/login";
+    }
+
+    @GetMapping("/individual")
+    public void individual(HttpServletResponse response) throws IOException {
+        response.sendRedirect("/account-service/index");
     }
 
     @Operation(summary = "企业注册", method = "POST")
@@ -108,7 +114,7 @@ public class AccountController {
     private String generateRealm(String email) {
         return email.substring(0, email.indexOf("@"));
     }
-    
+
     @GetMapping(path = "/logout")
     @ResponseBody
     public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {

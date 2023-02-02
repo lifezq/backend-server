@@ -23,12 +23,6 @@
             <groupId>com.dpi</groupId>
             <artifactId>common-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <!--            <exclusions>-->
-            <!--                <exclusion>-->
-            <!--                    <artifactId>springfox-boot-starter</artifactId>-->
-            <!--                    <groupId>io.springfox</groupId>-->
-            <!--                </exclusion>-->
-            <!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

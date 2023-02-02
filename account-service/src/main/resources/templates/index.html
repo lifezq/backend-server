@@ -5,8 +5,13 @@
 
     <div class="jumbotron">
         <p class="center-block">
-            欢迎租户[<span th:text="${tenant}"></span>]下用户[<span th:text="${username}"></span>]来到云平台主页面...</br>
-            当前节点：<span th:text="${nodeHost}"></span>:<span th:text="${nodePort}"></span>
+            <th:block th:if="${username}">
+                欢迎租户[<span th:text="${tenant}"></span>]下用户[<span th:text="${username}"></span>]来到云平台主页面...</br>
+                当前节点：<span th:text="${nodeHost}"></span>:<span th:text="${nodePort}"></span>
+            </th:block>
+            <th:block th:unless="${username}">
+                未登录状态， <a href="/account/login"> 登录</a>
+            </th:block>
         </p>
     </div>
 
