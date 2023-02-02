@@ -25,6 +25,7 @@ public class ServerApplication {
 
 
     @GetMapping("server")
+//    @RolesAllowed("myrealm-user")
     @ResponseBody
     public String hello() {
         return "Hello..." + environment.getProperty("server.port");
