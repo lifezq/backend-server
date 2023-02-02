@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author Ryan
  * @Date 2022/12/22
  */
-@MapperScan(basePackages = {"com.dpi.server.mapper.*"})
+//@MapperScan(basePackages = {"com.dpi.server.mapper.*"})
 @SpringBootApplication
 @RestController
 public class ServerApplication {
