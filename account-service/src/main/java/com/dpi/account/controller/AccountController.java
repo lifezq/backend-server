@@ -3,9 +3,11 @@ package com.dpi.account.controller;
 import com.dpi.account.convert.EnterpriseRegisterConvertor;
 import com.dpi.account.dto.EmailValidateRequestDTO;
 import com.dpi.account.dto.EnterpriseRegisterRequestDTO;
+import com.dpi.account.dto.UserInfoDTO;
 import com.dpi.common.bo.AuthClientMeta;
 import com.dpi.common.dto.ResponseDTO;
 import com.dpi.common.service.CommonUserService;
+import com.dpi.common.utils.TokenUtil;
 import com.dpi.database.mapper.auto.entity.EnterpriseRegister;
 import com.dpi.database.mapper.auto.entity.Tenant;
 import com.dpi.database.mapper.auto.service.impl.EnterpriseRegisterServiceImpl;
@@ -14,14 +16,17 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
 import org.keycloak.KeycloakPrincipal;
+import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.adapters.RefreshableKeycloakSecurityContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -62,8 +67,30 @@ public class AccountController {
     }
 
     @GetMapping("/individual")
-    public void individual(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/account-service/index");
+    @ResponseBody
+    public void individual(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        @SuppressWarnings("rawtypes")
+        KeycloakPrincipal principal = (KeycloakPrincipal) request.getUserPrincipal();
+        if (principal != null) {
+            KeycloakSecurityContext keycloakSecurityContext = principal.getKeycloakSecurityContext();
+            Cookie cookie = new Cookie("token", keycloakSecurityContext.getTokenString());
+            cookie.setPath("/");
+            cookie.setMaxAge(60 * 60 * 24 * 7);
+            cookie.setHttpOnly(true);
+            response.addCookie(cookie);
+        }
+
+        response.sendRedirect(String.format("%s/index", request.getContextPath()));
+    }
+
+    @GetMapping("/getUserInfo")
+    @ResponseBody
+    public ResponseDTO<UserInfoDTO> getUserInfo(HttpServletRequest request, Model model) {
+        UserInfoDTO userInfoDTO = UserInfoDTO.builder()
+                .token(TokenUtil.parseTokenFromRequest(request))
+                .build();
+        return ResponseDTO.<UserInfoDTO>builder()
+                .data(userInfoDTO).build();
     }
 
     @Operation(summary = "企业注册", method = "POST")

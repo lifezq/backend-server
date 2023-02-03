@@ -29,7 +29,11 @@ public class CommonUserService {
 
             Cookie cookie = new Cookie("JSESSIONID", "");
             cookie.setPath(request.getContextPath());
-            cookie.setHttpOnly(false);
+            cookie.setHttpOnly(true);
+            cookie.setMaxAge(-1);
+            response.addCookie(cookie);
+            cookie = new Cookie("token", "");
+            cookie.setPath("/");
             cookie.setMaxAge(-1);
             response.addCookie(cookie);
 

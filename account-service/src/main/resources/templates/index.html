@@ -10,7 +10,7 @@
                 当前节点：<span th:text="${nodeHost}"></span>:<span th:text="${nodePort}"></span>
             </th:block>
             <th:block th:unless="${username}">
-                未登录状态， <a href="/account/login"> 登录</a>
+                未登录状态， <a th:href="@{/account/login}"> 登录</a>
             </th:block>
         </p>
     </div>
