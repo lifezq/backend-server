@@ -42,17 +42,11 @@ public class IndexController {
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
             return String.format("欢迎租户[%s]->用户<%s>来到开发者中心,\n当前节点:%s:%s",
-                    tenant, getUsernameFromRequest(request), Inet4Address.getLocalHost().getHostAddress(),
+                    keycloakSecurityContext.getRealm(), keycloakSecurityContext.getIdToken().getPreferredUsername(),
+                    Inet4Address.getLocalHost().getHostAddress(),
                     environment.getProperty("server.port"));
         }
 
         return "尚未登录...";
-    }
-
-    public String getUsernameFromRequest(HttpServletRequest request) {
-        @SuppressWarnings("rawtypes")
-        KeycloakPrincipal principal = (KeycloakPrincipal) request.getUserPrincipal();
-        KeycloakSecurityContext keycloakSecurityContext = principal.getKeycloakSecurityContext();
-        return keycloakSecurityContext.getIdToken().getPreferredUsername();
     }
 }

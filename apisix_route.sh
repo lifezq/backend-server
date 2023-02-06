@@ -47,7 +47,40 @@
 #}'
 
 
-# create developer-service route 00000000000000000169
+# create developer-service route 00000000000000000707
+#curl -XPOST http://localhost:9180/apisix/admin/routes \
+#-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
+#-d  \
+#'{
+#    "uri": "/developer/*",
+#    "methods": [
+#        "GET",
+#        "POST",
+#        "PUT",
+#        "DELETE"
+#    ],
+#    "hosts": [
+#        "localhost"
+#    ],
+#    "plugins": {
+#        "ext-plugin-pre-req": {
+#            "conf": [
+#                {
+#                    "name": "AppRewriteRequestRealmFilter",
+#                    "value": "{\"MY_PLUGIN_CONFIG_PARAMS\":\"MY_PLUGIN_CONFIG_PARAMS_VALUE\"}"
+#                }
+#            ]
+#        }
+#    },
+#    "upstream": {
+#        "nodes": {
+#            "localhost:9080": 1
+#        },
+#        "type": "roundrobin"
+#    }
+#}'
+
+# create developer-company-2 route 00000000000000000169
 #curl -XPOST http://localhost:9180/apisix/admin/routes \
 #-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
 #-d  \
@@ -94,37 +127,27 @@
 #}'
 
 # update developer-company-2 route 00000000000000000547
-curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000547 \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
--d  \
-'{
-    "uri": "/developer-company-2/*",
-    "methods": [
-        "GET",
-        "POST",
-        "PUT",
-        "DELETE"
-    ],
-    "hosts": [
-        "localhost"
-    ],
-    "plugins": {
-        "ext-plugin-pre-req": {
-            "conf": [
-                {
-                    "name": "AppRewriteRequestRealmFilter",
-                    "value": "{\"MY_PLUGIN_CONFIG_PARAMS\":\"MY_PLUGIN_CONFIG_PARAMS_VALUE\"}"
-                }
-            ]
-        }
-    },
-    "upstream": {
-        "nodes": {
-            "192.168.56.1:9041": 1
-        },
-        "type": "roundrobin"
-    }
-}'
+#curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000547 \
+#-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
+#-d  \
+#'{
+#    "uri": "/developer-company-2/*",
+#    "methods": [
+#        "GET",
+#        "POST",
+#        "PUT",
+#        "DELETE"
+#    ],
+#    "hosts": [
+#        "localhost"
+#    ],
+#    "upstream": {
+#        "nodes": {
+#            "192.168.56.1:9041": 1
+#        },
+#        "type": "roundrobin"
+#    }
+#}'
 
 # create login route 00000000000000000171
 #curl -XPOST http://localhost:9180/apisix/admin/routes \
@@ -181,6 +204,53 @@ curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000547 \
 #    "upstream": {
 #        "nodes": {
 #            "localhost:9080": 1
+#        },
+#        "type": "roundrobin"
+#    }
+#}'
+
+
+# create software-market-company-1 route 00000000000000000723
+#curl -XPOST http://localhost:9180/apisix/admin/routes \
+#-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
+#-d  \
+#'{
+#    "uri": "/software-market-company-1/*",
+#    "methods": [
+#        "GET",
+#        "POST",
+#        "PUT",
+#        "DELETE"
+#    ],
+#    "hosts": [
+#        "localhost"
+#    ],
+#    "upstream": {
+#        "nodes": {
+#            "192.168.56.1:9030": 1
+#        },
+#        "type": "roundrobin"
+#    }
+#}'
+
+# update software-market-company-1 route 00000000000000000723
+#curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000723 \
+#-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
+#-d  \
+#'{
+#    "uri": "/software-market-company-1/*",
+#    "methods": [
+#        "GET",
+#        "POST",
+#        "PUT",
+#        "DELETE"
+#    ],
+#    "hosts": [
+#        "localhost"
+#    ],
+#    "upstream": {
+#        "nodes": {
+#            "192.168.56.1:9030": 1
 #        },
 #        "type": "roundrobin"
 #    }

@@ -30,24 +30,8 @@
         </dependency>
         <dependency>
             <groupId>com.dpi</groupId>
-            <artifactId>mq-common-component-module</artifactId>
+            <artifactId>common-database-auto-module</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dpi</groupId>
-            <artifactId>producer-message-provider-module</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-            <version>${mysql-connector.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
