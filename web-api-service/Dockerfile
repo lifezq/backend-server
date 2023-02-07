@@ -1,4 +1,4 @@
-FROM springci/spring-boot-ci-jdk11:2.7.x
+FROM openjdk:11-jdk-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV WORK_DIR=/opt/web-api-service
