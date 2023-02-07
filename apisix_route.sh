@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# create account-service route
+# create account-service route 00000000000000000026
 #curl -XPOST http://localhost:9180/apisix/admin/routes \
 #-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
 #-d  \
@@ -80,7 +80,30 @@
 #    }
 #}'
 
-# create developer-company-2 route 00000000000000000169
+# create developer-company-1 route 00000000000000000024
+#curl -XPOST http://localhost:9180/apisix/admin/routes \
+#-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
+#-d  \
+#'{
+#    "uri": "/developer-company-1/*",
+#    "methods": [
+#        "GET",
+#        "POST",
+#        "PUT",
+#        "DELETE"
+#    ],
+#    "hosts": [
+#        "localhost"
+#    ],
+#    "upstream": {
+#        "nodes": {
+#            "192.168.56.1:9040": 1
+#        },
+#        "type": "roundrobin"
+#    }
+#}'
+
+# create developer-company-2 route 00000000000000000022
 #curl -XPOST http://localhost:9180/apisix/admin/routes \
 #-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
 #-d  \
@@ -149,38 +172,36 @@
 #    }
 #}'
 
-# create login route 00000000000000000171
+# create login route 00000000000000000020
 #curl -XPOST http://localhost:9180/apisix/admin/routes \
 #-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
 #-d  \
 #'{
-#    "uri": "/account-service/account/doLogin",
-#    "methods": [
-#        "POST"
-#    ],
-#    "hosts": [
-#        "localhost"
-#    ],
-#    "plugins":
-#        "ext-plugin-pre-req": {
-#            "conf": [
-#                {
-#                    "name": "DoLonginRewriteRequestRealmFilter",
-#                    "value": "{\"MY_PLUGIN_CONFIG_PARAMS\":\"MY_PLUGIN_CONFIG_PARAMS_VALUE\"}"
-#                }
-#            ]
-#        }
-#    },
-#    "upstream": {
-#        "nodes": {
-#            "192.168.56.1:9050": 1
-#        },
-#        "type": "roundrobin"
-#    }
+#	"uri": "/account-service/account/doLogin",
+#	"methods": [
+#		"POST"
+#	],
+#	"hosts": [
+#		"localhost"
+#	],
+#	"plugins": {
+#		"ext-plugin-pre-req": {
+#			"conf": [{
+#				"name": "DoLonginRewriteRequestRealmFilter",
+#				"value": "{\"MY_PLUGIN_CONFIG_PARAMS\":\"MY_PLUGIN_CONFIG_PARAMS_VALUE\"}"
+#			}]
+#		}
+#	},
+#	"upstream": {
+#		"nodes": {
+#			"192.168.56.1:9050": 1
+#		},
+#		"type": "roundrobin"
+#	}
 #}'
 
-# update login route 00000000000000000171
-#curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000171 \
+# update login route 00000000000000000020
+#curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000020 \
 #-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
 #-d  \
 #'{
@@ -210,7 +231,7 @@
 #}'
 
 
-# create software-market-company-1 route 00000000000000000723
+# create software-market-company-1 route 00000000000000000016
 #curl -XPOST http://localhost:9180/apisix/admin/routes \
 #-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
 #-d  \
@@ -233,8 +254,8 @@
 #    }
 #}'
 
-# update software-market-company-1 route 00000000000000000723
-#curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000723 \
+# update software-market-company-1 route 00000000000000000016
+#curl -XPUT http://localhost:9180/apisix/admin/routes/00000000000000000016 \
 #-H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" \
 #-d  \
 #'{

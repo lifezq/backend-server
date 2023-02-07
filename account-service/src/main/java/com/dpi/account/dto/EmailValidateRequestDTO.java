@@ -19,5 +19,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EmailValidateRequestDTO {
     @Schema(title = "邮箱", example = "abc@gmail.com")
-    private String email;
+    private String username;
 }

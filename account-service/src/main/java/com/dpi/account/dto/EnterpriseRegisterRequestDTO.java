@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EnterpriseRegisterRequestDTO {
     @Schema(title = "邮箱", example = "abc@gmail.com")
-    private String email;
+    private String username;
 
     @Schema(title = "企业统一社会信用代码", example = "000000000000001")
     private String unifiedCorporateSocialCreditCode;

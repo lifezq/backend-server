@@ -1,4 +1,4 @@
-FROM springci/graalvm-ce:java17-0.12.x
+FROM springci/spring-boot-ci-jdk11:2.7.x
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV WORK_DIR=/opt/web-api-service

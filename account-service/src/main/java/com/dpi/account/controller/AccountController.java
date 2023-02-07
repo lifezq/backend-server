@@ -98,13 +98,13 @@ public class AccountController {
     @ResponseBody
     public ResponseDTO<String> enterpriseRegister(@RequestBody EnterpriseRegisterRequestDTO param) {
 
-        EnterpriseRegister item = enterpriseRegisterService.query().ge(true, "email", param.getEmail()).one();
+        EnterpriseRegister item = enterpriseRegisterService.query().ge(true, "email", param.getUsername()).one();
         if (item != null) {
             return ResponseDTO.<String>builder()
                     .code(HttpStatus.BAD_REQUEST.value()).message("email already exists!").build();
         }
 
-        String realm = generateRealm(param.getEmail());
+        String realm = generateRealm(param.getUsername());
 
         Tenant maxTenant = tenantService.query().select("MAX(id) AS id").one();
         if (maxTenant == null) {
@@ -122,13 +122,20 @@ public class AccountController {
         return ResponseDTO.<String>builder().data(realm).build();
     }
 
+    @Operation(summary = "个人注册", method = "POST")
+    @PostMapping("/personalRegister")
+    @ResponseBody
+    public ResponseDTO<String> personalRegister(@RequestBody EmailValidateRequestDTO param) {
+        return ResponseDTO.<String>builder().data(null).build();
+    }
+
     @Operation(summary = "邮箱验证", method = "POST")
     @PostMapping("/emailValidate")
     @ResponseBody
     public ResponseDTO<Boolean> emailValidate(@RequestBody EmailValidateRequestDTO param) {
 
         EnterpriseRegister item = enterpriseRegisterService.getOne(
-                enterpriseRegisterService.query().ge(true, "email", param.getEmail())
+                enterpriseRegisterService.query().ge(true, "email", param.getUsername())
         );
         if (item != null) {
             return ResponseDTO.<Boolean>builder()
